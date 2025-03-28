@@ -1,0 +1,44 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block 'content' %}
+<section class="breadcrumb-section set-bg" data-setbg="{% static 'img/breadcrumb.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>My Orders</h2>
+                    <div class="breadcrumb__option">
+                        <a href="/">Home</a>
+                        <span>My Orders</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<div class="container">
+    <table class="table table-bordered " >
+        <tr  >
+            <thead  >
+                <th style="background-color: #7fad39; color: white;">Order Id</th>
+                <th style="background-color: #7fad39; color: white;">Product Image</th>
+                <th style="background-color: #7fad39; color: white;">Product Name</th>
+                <th style="background-color: #7fad39; color: white;">Quantity</th>
+                <th style="background-color: #7fad39; color: white;">Price</th>
+            </thead>
+        </tr>
+        {% for o in order %}
+        <tr>
+            <tbody class="text-center">
+                <td>{{o.order_id}}</td>
+                <td><a href="../productdetails/{{o.product.id}}"><img src='{{o.product.images.url}}' width="100px"></a></td>
+                <td>{{o.product.name}}</td>
+                <td>{{o.qty}}</td>
+                <td>$ {{o.product.mrp}}</td>
+            </tbody>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

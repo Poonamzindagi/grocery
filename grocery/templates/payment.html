@@ -1,0 +1,30 @@
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block 'content' %}
+
+<form action="../complete_payment" method="post" id="paymentform" style="display:none">
+    {% csrf_token %}
+    <script src="https://checkout.razorpay.com/v1/checkout.js"
+        data-key="rzp_test_cNmxFeX0VSlhuR"
+        data-amount="{{amount}}"
+        data-currency="INR"
+        data-name="Grocery"
+        data-description="Test Payment"
+        data-image="../media/logo.png"
+       
+        data-theme.color="#F37254">
+    </script>
+    <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id">
+    
+</form>
+
+<script>
+    $(function(){
+        $('#paymentform').submit()
+    })
+</script>
+
+
+{% endblock %}

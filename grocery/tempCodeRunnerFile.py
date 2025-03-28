@@ -1,0 +1,1 @@
+int(c.qty)*int(c.product.mrp)
